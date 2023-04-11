@@ -15,6 +15,6 @@ SELECT * FROM fortnite;
 SELECT SUM(hours_played) total_hours, 
     SUM(wins) total_wins, 
     SUM(matches) total_matches,
-    SUM(hours_played)
+    SUM(hours_played) total_hours
         
     FROM fortnite;
