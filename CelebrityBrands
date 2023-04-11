@@ -1,0 +1,56 @@
+CREATE TABLE celebrities (id INTEGER, name TEXT, age INTEGER, career TEXT, brand TEXT);
+
+INSERT INTO celebrities VALUES (1, "Lady Gaga", 27, "musician", "YES");
+INSERT INTO celebrities VALUES (2, "Selena Gomez", 30, "musician", "YES");
+INSERT INTO celebrities VALUES (3, "Gwyneth Paltrow", 50, "actress", "YES");
+INSERT INTO celebrities VALUES (4, "Hailey Bieber", 26, "model", "YES");
+INSERT INTO celebrities VALUES (5, "Rihanna", 35, "musician", "YES");
+INSERT INTO celebrities VALUES (6, "Kim Kardashian", 42, "model", "YES");
+INSERT INTO celebrities VALUES (7, "Melissa Jefferson", 34, "musician", "YES");
+INSERT INTO celebrities VALUES (8, "Justin Bieber", 29, "musician", "YES");
+INSERT INTO celebrities VALUES (9, "Kanye West", 45, "musician", "YES");
+INSERT INTO celebrities VALUES (10, "Victoria Beckham", 48, "musician", "YES");
+INSERT INTO celebrities VALUES (11, "Tom Segura", 43, "comedian", "NO");
+INSERT INTO celebrities VALUES (12, "Emma Chamberlain", 21, "model", "YES");
+INSERT INTO celebrities VALUES (13, "Joseph Santagato", 31, "comedian", "NO");
+INSERT INTO celebrities VALUES (14, "Eric Whitacre", 53, "musician", "NO");
+INSERT INTO celebrities VALUES (15, "Jennifer Stone", 30, "actress", "NO");
+
+CREATE TABLE beauty_brands (id INTEGER, brand_name TEXT, year_launched INTEGER, founder TEXT);
+
+INSERT INTO beauty_brands VALUES (1, "Haus Labs", 2019, "Lady Gaga");
+INSERT INTO beauty_brands VALUES (2, "Rare Beauty", 2020, "Selena Gomes");
+INSERT INTO beauty_brands VALUES (3, "Goop", 2008, "Gwyneth Paltrow");
+INSERT INTO beauty_brands VALUES (4, "Rhode", 2022, "Hailey Bieber");
+INSERT INTO beauty_brands VALUES (5, "Fenty Beauty", 2017, "Rihanna");
+
+
+CREATE TABLE clothing_brands (id INTEGER, brand_name TEXT, year_launched INTEGER, founder TEXT);
+
+INSERT INTO clothing_brands VALUES (6, "Skims", 2019, "Kim Kardashian");
+INSERT INTO clothing_brands VALUES (7, "YITTY", 2022, "Melissa Jefferson");
+INSERT INTO clothing_brands VALUES (8, "drew house", 2018, "Justin Bieber");
+INSERT INTO clothing_brands VALUES (9, "Yeezy", 2015, "Kanye West");
+INSERT INTO clothing_brands VALUES (10, "Victoria Beckham", 2019, "Victoria Beckham");
+
+
+
+    SELECT a.name, a.age, b.brand_name as beauty_brand, b.year_launched
+    FROM celebrities a
+        JOIN beauty_brands b
+    ON a.id = b.id;
+    
+    
+    SELECT a.name, a.age, c.brand_name as clothing_brand, c.year_launched
+    FROM celebrities a
+        JOIN clothing_brands c
+    ON a.id = c.id;
+    
+    SELECT name AS founders_under35 
+    FROM celebrities
+    WHERE brand = "YES" AND age < 35;
+    
+    
+    SELECT name AS without_brand
+    FROM celebrities
+    WHERE brand = "NO";
