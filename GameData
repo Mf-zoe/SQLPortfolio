@@ -1,0 +1,20 @@
+CREATE TABLE fortnite (id INTEGER PRIMARY KEY, category TEXT, wins INTEGER, eliminations INTEGER, matches INTEGER);
+INSERT INTO fortnite    (category, wins, eliminations, matches)                                  VALUES ("solo",  26, 1172, 232);
+INSERT INTO fortnite    (category, wins, eliminations, matches)                                  VALUES ("duo", 107, 2024, 735);
+INSERT INTO fortnite    (category, wins, eliminations, matches)                                  VALUES ("squad", 232, 2182, 878);
+INSERT INTO fortnite    (category, wins, eliminations, matches)                                  VALUES ("LTM", 36, 1148, 334);
+
+
+ALTER TABLE fortnite ADD hours_played INTEGER;
+UPDATE fortnite SET hours_played = (matches*20) /60;
+
+DELETE FROM fortnite WHERE category = "LTM";
+
+SELECT * FROM fortnite;
+
+SELECT SUM(hours_played) total_hours, 
+    SUM(wins) total_wins, 
+    SUM(matches) total_matches,
+    SUM(hours_played)
+        
+    FROM fortnite;
